@@ -1,0 +1,33 @@
+modLoader="javafml"
+loaderVersion="[44,)"
+license="AGPL v3.0"
+issueTrackerURL="https://github.com/Viola-Siemens/Custom-World-Generation/issues"
+
+[[mods]]
+modId="custom_worldgen"
+version="${file.jarVersion}"
+displayName="Custom World Generation"
+logoFile="logo.png"
+credits="Liu Dongyu"
+authors="Hexagram"
+
+description='''
+You can customize world generation with this mod, for example, biome generation and structure generation.
+
+Coded by Liu Dongyu.
+'''
+
+[[dependencies.custom_worldgen]]
+    modId="forge"
+    mandatory=true
+    versionRange="[44,)"
+    ordering="NONE"
+    side="BOTH"
+    
+[[dependencies.custom_worldgen]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.3,1.20)"
+    ordering="NONE"
+    side="BOTH"
+
