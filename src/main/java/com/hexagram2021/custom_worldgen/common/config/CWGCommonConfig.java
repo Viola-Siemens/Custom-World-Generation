@@ -136,6 +136,8 @@ public class CWGCommonConfig {
 	public static final FloatConfigValue PEAKS_EROSION_SHAPER = new FloatConfigValue("PEAKS_EROSION_SHAPER", 0.92F, -1.2F, 1.2F);
 
 	//Octaves
+	public static final IntConfigValue OCTAVE_TEMPERATURE_ADDER = new IntConfigValue("OCTAVE_TEMPERATURE_ADDER", 0, -8, 8);
+	public static final IntConfigValue OCTAVE_HUMIDITY_ADDER = new IntConfigValue("OCTAVE_HUMIDITY_ADDER", 0, -8, 8);
 	public static final IntConfigValue OCTAVE_CONTINENTALNESS_ADDER = new IntConfigValue("OCTAVE_CONTINENTALNESS_ADDER", 1, -8, 8);
 
 	static {
@@ -183,7 +185,8 @@ public class CWGCommonConfig {
 			writer.write("\t\"FROZEN_TEMPERATURE\": -0.45,\n");
 			writer.write("\t\"COOL_TEMPERATURE\": -0.15,\n");
 			writer.write("\t\"WARM_TEMPERATURE\": 0.2,\n");
-			writer.write("\t\"HOT_TEMPERATURE\": 0.55\n");
+			writer.write("\t\"HOT_TEMPERATURE\": 0.55,\n");
+			writer.write("\t\"OCTAVE_TEMPERATURE_ADDER\": 0\n");
 			writer.write("}\n```\n\n");
 			writer.write("# Humidity\n\n");
 			writer.write("## Presets\n\n");
@@ -192,7 +195,8 @@ public class CWGCommonConfig {
 			writer.write("\t\"ARID_HUMIDITY\": -0.35,\n");
 			writer.write("\t\"DRY_HUMIDITY\": -0.1,\n");
 			writer.write("\t\"WET_HUMIDITY\": 0.1,\n");
-			writer.write("\t\"HUMID_HUMIDITY\": 0.3\n");
+			writer.write("\t\"HUMID_HUMIDITY\": 0.3,\n");
+			writer.write("\t\"OCTAVE_HUMIDITY_ADDER\": 0\n");
 			writer.write("}\n```\n\n");
 			writer.write("# Continentalness\n\n");
 			writer.write("## Config Generator\n\n");
