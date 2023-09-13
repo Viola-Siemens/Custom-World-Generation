@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.hexagram2021.custom_worldgen.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "custom_worldgen.refmap.json",
+  "mixins": [
+    "BiomeGenerationMixin",
+    "NoiseDataMixin",
+    "TerrainShaperMixin"
+  ],
+  "minVersion": "0.8"
+}
