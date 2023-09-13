@@ -115,30 +115,30 @@ public class CWGCommonConfig {
 	public static final FloatConfigValue HUMID_HUMIDITY = new FloatConfigValue("HUMID_HUMIDITY", 0.3F, -1.0F, 1.0F);
 
 	//Continentalness Points
-	public static final FloatConfigValue MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS = new FloatConfigValue("MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS", -1.01F, -1.2F, 1.2F);
-	public static final FloatConfigValue DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS = new FloatConfigValue("DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS", 0.29F, -1.2F, 1.2F);
-	public static final FloatConfigValue OCEAN_TO_COAST_CONTINENTALNESS = new FloatConfigValue("OCEAN_TO_COAST_CONTINENTALNESS", 0.42F, -1.2F, 1.2F);
-	public static final FloatConfigValue COAST_TO_INLAND_CONTINENTALNESS = new FloatConfigValue("COAST_TO_INLAND_CONTINENTALNESS", 0.51F, -1.2F, 1.2F);
-	public static final FloatConfigValue NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS = new FloatConfigValue("NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS", 0.62F, -1.2F, 1.2F);
-	public static final FloatConfigValue MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS = new FloatConfigValue("MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS", 0.785F, -1.2F, 1.2F);
-	public static final FloatConfigValue PEAKS_CONTINENTALNESS = new FloatConfigValue("PEAKS_CONTINENTALNESS", 0.9F, -1.2F, 1.2F);
+	public static final FloatConfigValue MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS = new FloatConfigValue("MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS", -1.05F, -1.2F, 1.2F);
+	public static final FloatConfigValue DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS = new FloatConfigValue("DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS", -0.455F, -1.2F, 1.2F);
+	public static final FloatConfigValue OCEAN_TO_COAST_CONTINENTALNESS = new FloatConfigValue("OCEAN_TO_COAST_CONTINENTALNESS", -0.19F, -1.2F, 1.2F);
+	public static final FloatConfigValue COAST_TO_INLAND_CONTINENTALNESS = new FloatConfigValue("COAST_TO_INLAND_CONTINENTALNESS", -0.11F, -1.2F, 1.2F);
+	public static final FloatConfigValue NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS = new FloatConfigValue("NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS", 0.03F, -1.2F, 1.2F);
+	public static final FloatConfigValue MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS = new FloatConfigValue("MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS", 0.3F, -1.2F, 1.2F);
+	public static final FloatConfigValue PEAKS_CONTINENTALNESS = new FloatConfigValue("PEAKS_CONTINENTALNESS", 0.55F, -1.2F, 1.2F);
 
 	//Terrain Shaper Points
-	public static final FloatConfigValue MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER = new FloatConfigValue("MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER", -0.99F, -1.2F, 1.2F);
-	public static final FloatConfigValue DEEP_OCEAN_TO_OCEAN_SHAPER = new FloatConfigValue("DEEP_OCEAN_TO_OCEAN_SHAPER", 0.25F, -1.2F, 1.2F);
-	public static final FloatConfigValue OCEAN_TO_COAST_SHAPER = new FloatConfigValue("OCEAN_TO_COAST_SHAPER", 0.325F, -1.2F, 1.2F);
-	public static final FloatConfigValue COAST_WATER_SHAPER = new FloatConfigValue("COAST_WATER_SHAPER", 0.43F, -1.2F, 1.2F);
-	public static final FloatConfigValue COAST_BANK_SHAPER = new FloatConfigValue("COAST_BANK_SHAPER", 0.47F, -1.2F, 1.2F);
-	public static final FloatConfigValue COAST_LAND_SHAPER = new FloatConfigValue("COAST_LAND_SHAPER", 0.48F, -1.2F, 1.2F);
-	public static final FloatConfigValue NEAR_INLAND_SHAPER = new FloatConfigValue("NEAR_INLAND_SHAPER", 0.52F, -1.2F, 1.2F);
-	public static final FloatConfigValue INLAND_EROSION_SHAPER = new FloatConfigValue("INLAND_EROSION_SHAPER", 0.64F, -1.2F, 1.2F);
-	public static final FloatConfigValue MID_INLAND_SHAPER = new FloatConfigValue("MID_INLAND_SHAPER", 0.76F, -1.2F, 1.2F);
-	public static final FloatConfigValue PEAKS_EROSION_SHAPER = new FloatConfigValue("PEAKS_EROSION_SHAPER", 0.92F, -1.2F, 1.2F);
+	public static final FloatConfigValue MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER = new FloatConfigValue("MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER", -1.02F, -1.2F, 1.2F);
+	public static final FloatConfigValue DEEP_OCEAN_TO_OCEAN_SHAPER = new FloatConfigValue("DEEP_OCEAN_TO_OCEAN_SHAPER", -0.51F, -1.2F, 1.2F);
+	public static final FloatConfigValue OCEAN_TO_COAST_SHAPER = new FloatConfigValue("OCEAN_TO_COAST_SHAPER", -0.44F, -1.2F, 1.2F);
+	public static final FloatConfigValue COAST_WATER_SHAPER = new FloatConfigValue("COAST_WATER_SHAPER", -0.18F, -1.2F, 1.2F);
+	public static final FloatConfigValue COAST_BANK_SHAPER = new FloatConfigValue("COAST_BANK_SHAPER", -0.16F, -1.2F, 1.2F);
+	public static final FloatConfigValue COAST_LAND_SHAPER = new FloatConfigValue("COAST_LAND_SHAPER", -0.15F, -1.2F, 1.2F);
+	public static final FloatConfigValue NEAR_INLAND_SHAPER = new FloatConfigValue("NEAR_INLAND_SHAPER", -0.1F, -1.2F, 1.2F);
+	public static final FloatConfigValue INLAND_EROSION_SHAPER = new FloatConfigValue("INLAND_EROSION_SHAPER", 0.06F, -1.2F, 1.2F);
+	public static final FloatConfigValue MID_INLAND_SHAPER = new FloatConfigValue("MID_INLAND_SHAPER", 0.25F, -1.2F, 1.2F);
+	public static final FloatConfigValue PEAKS_EROSION_SHAPER = new FloatConfigValue("PEAKS_EROSION_SHAPER", 0.65F, -1.2F, 1.2F);
 
 	//Octaves
 	public static final IntConfigValue OCTAVE_TEMPERATURE_ADDER = new IntConfigValue("OCTAVE_TEMPERATURE_ADDER", 0, -8, 8);
 	public static final IntConfigValue OCTAVE_HUMIDITY_ADDER = new IntConfigValue("OCTAVE_HUMIDITY_ADDER", 0, -8, 8);
-	public static final IntConfigValue OCTAVE_CONTINENTALNESS_ADDER = new IntConfigValue("OCTAVE_CONTINENTALNESS_ADDER", 1, -8, 8);
+	public static final IntConfigValue OCTAVE_CONTINENTALNESS_ADDER = new IntConfigValue("OCTAVE_CONTINENTALNESS_ADDER", 0, -8, 8);
 
 	static {
 		lazyInit();
