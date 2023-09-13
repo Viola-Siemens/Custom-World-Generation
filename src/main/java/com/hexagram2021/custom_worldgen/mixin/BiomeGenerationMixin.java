@@ -10,6 +10,48 @@ import static com.hexagram2021.custom_worldgen.common.config.CWGCommonConfig.*;
 
 @Mixin(OverworldBiomeBuilder.class)
 public class BiomeGenerationMixin {
+	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 1))
+	public Climate.Parameter modifyFrozenTemperature(float from, float to) {
+		return Climate.Parameter.span(-1.0F, FROZEN_TEMPERATURE.value());
+	}
+	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 2))
+	public Climate.Parameter modifyCoolTemperature(float from, float to) {
+		return Climate.Parameter.span(FROZEN_TEMPERATURE.value(), COOL_TEMPERATURE.value());
+	}
+	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 3))
+	public Climate.Parameter modifyNeutralTemperature(float from, float to) {
+		return Climate.Parameter.span(COOL_TEMPERATURE.value(), WARM_TEMPERATURE.value());
+	}
+	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 4))
+	public Climate.Parameter modifyWarmTemperature(float from, float to) {
+		return Climate.Parameter.span(WARM_TEMPERATURE.value(), HOT_TEMPERATURE.value());
+	}
+	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 5))
+	public Climate.Parameter modifyHotTemperature(float from, float to) {
+		return Climate.Parameter.span(HOT_TEMPERATURE.value(), 1.0F);
+	}
+
+	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 6))
+	public Climate.Parameter modifyAridHumidity(float from, float to) {
+		return Climate.Parameter.span(-1.0F, ARID_HUMIDITY.value());
+	}
+	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 7))
+	public Climate.Parameter modifyDryHumidity(float from, float to) {
+		return Climate.Parameter.span(ARID_HUMIDITY.value(), DRY_HUMIDITY.value());
+	}
+	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 8))
+	public Climate.Parameter modifyNeutralHumidity(float from, float to) {
+		return Climate.Parameter.span(DRY_HUMIDITY.value(), WET_HUMIDITY.value());
+	}
+	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 9))
+	public Climate.Parameter modifyWetHumidity(float from, float to) {
+		return Climate.Parameter.span(WET_HUMIDITY.value(), HUMID_HUMIDITY.value());
+	}
+	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 10))
+	public Climate.Parameter modifyHumidHumidity(float from, float to) {
+		return Climate.Parameter.span(HUMID_HUMIDITY.value(), 1.0F);
+	}
+
 	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 18))
 	public Climate.Parameter modifyMushroomFieldsContinentalness(float from, float to) {
 		return Climate.Parameter.span(-1.2F, MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS.value());

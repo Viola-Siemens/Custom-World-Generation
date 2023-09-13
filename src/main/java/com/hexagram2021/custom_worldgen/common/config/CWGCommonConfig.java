@@ -102,6 +102,18 @@ public class CWGCommonConfig {
 	private static final File configFile = new File(filePath + "/" + MODID + "-config.json");
 	private static final File readmeFile = new File(filePath + "/" + MODID + "-config-readme.md");
 
+	//Temperature Points.
+	public static final FloatConfigValue FROZEN_TEMPERATURE = new FloatConfigValue("FROZEN_TEMPERATURE", -0.45F, -1.0F, 1.0F);
+	public static final FloatConfigValue COOL_TEMPERATURE = new FloatConfigValue("COOL_TEMPERATURE", -0.15F, -1.0F, 1.0F);
+	public static final FloatConfigValue WARM_TEMPERATURE = new FloatConfigValue("WARM_TEMPERATURE", 0.2F, -1.0F, 1.0F);
+	public static final FloatConfigValue HOT_TEMPERATURE = new FloatConfigValue("HOT_TEMPERATURE", 0.55F, -1.0F, 1.0F);
+
+	//Humidity Points
+	public static final FloatConfigValue ARID_HUMIDITY = new FloatConfigValue("ARID_HUMIDITY", -0.35F, -1.0F, 1.0F);
+	public static final FloatConfigValue DRY_HUMIDITY = new FloatConfigValue("DRY_HUMIDITY", -0.1F, -1.0F, 1.0F);
+	public static final FloatConfigValue WET_HUMIDITY = new FloatConfigValue("WET_HUMIDITY", 0.1F, -1.0F, 1.0F);
+	public static final FloatConfigValue HUMID_HUMIDITY = new FloatConfigValue("HUMID_HUMIDITY", 0.3F, -1.0F, 1.0F);
+
 	//Continentalness Points
 	public static final FloatConfigValue MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS = new FloatConfigValue("MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS", -1.01F, -1.2F, 1.2F);
 	public static final FloatConfigValue DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS = new FloatConfigValue("DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS", 0.29F, -1.2F, 1.2F);
@@ -111,7 +123,7 @@ public class CWGCommonConfig {
 	public static final FloatConfigValue MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS = new FloatConfigValue("MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS", 0.785F, -1.2F, 1.2F);
 	public static final FloatConfigValue PEAKS_CONTINENTALNESS = new FloatConfigValue("PEAKS_CONTINENTALNESS", 0.9F, -1.2F, 1.2F);
 
-	//Shaper Points
+	//Terrain Shaper Points
 	public static final FloatConfigValue MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER = new FloatConfigValue("MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER", -0.99F, -1.2F, 1.2F);
 	public static final FloatConfigValue DEEP_OCEAN_TO_OCEAN_SHAPER = new FloatConfigValue("DEEP_OCEAN_TO_OCEAN_SHAPER", 0.25F, -1.2F, 1.2F);
 	public static final FloatConfigValue OCEAN_TO_COAST_SHAPER = new FloatConfigValue("OCEAN_TO_COAST_SHAPER", 0.325F, -1.2F, 1.2F);
@@ -164,13 +176,32 @@ public class CWGCommonConfig {
 
 	private static void fillReadmeFile() throws IOException {
 		try(Writer writer = new FileWriter(readmeFile)) {
+			writer.write("# Temperature\n\n");
+			writer.write("## Presets\n\n");
+			writer.write("### Vanilla\n\n");
+			writer.write("```json\n{\n");
+			writer.write("\t\"FROZEN_TEMPERATURE\": -0.45,\n");
+			writer.write("\t\"COOL_TEMPERATURE\": -0.15,\n");
+			writer.write("\t\"WARM_TEMPERATURE\": 0.2,\n");
+			writer.write("\t\"HOT_TEMPERATURE\": 0.55\n");
+			writer.write("}\n```\n\n");
+			writer.write("# Humidity\n\n");
+			writer.write("## Presets\n\n");
+			writer.write("### Vanilla\n\n");
+			writer.write("```json\n{\n");
+			writer.write("\t\"ARID_HUMIDITY\": -0.35,\n");
+			writer.write("\t\"DRY_HUMIDITY\": -0.1,\n");
+			writer.write("\t\"WET_HUMIDITY\": 0.1,\n");
+			writer.write("\t\"HUMID_HUMIDITY\": 0.3\n");
+			writer.write("}\n```\n\n");
+			writer.write("# Continentalness\n\n");
 			writer.write("## Config Generator\n\n");
-			writer.write("You can use our [Config Generator](https://viola-siemens.github.io/pages/tools/oceanworld-config.html) to generate config and see the preview of the config you make.\n\n");
+			writer.write("If you are confused about continentalness points and terrain generation, you can try our [Config Generator](https://viola-siemens.github.io/pages/tools/oceanworld-config.html) to generate config and see the preview of the config you make.\n\n");
 			writer.write("## Description\n\n");
 			writer.write("The continentalness values and shaper values MUST BE ASCENDING!\n\n");
 			writer.write("If you modify these continentalness values, please remember to modify shaper values under the guide.\n\n");
 			writer.write("## Presets\n\n");
-			writer.write("### Default values\n\n");
+			writer.write("### Default Values in Ocean World Mod\n\n");
 			writer.write("```json\n{\n");
 			writer.write("\t\"MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS\": -1.01,\n");
 			writer.write("\t\"DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS\": 0.29,\n");
@@ -254,6 +285,14 @@ public class CWGCommonConfig {
 
 	public static void checkValues() {
 		IConfigValue.configValues.forEach(IConfigValue::checkValueRange);
+
+		checkValue(FROZEN_TEMPERATURE, COOL_TEMPERATURE);
+		checkValue(COOL_TEMPERATURE, WARM_TEMPERATURE);
+		checkValue(WARM_TEMPERATURE, HOT_TEMPERATURE);
+
+		checkValue(ARID_HUMIDITY, DRY_HUMIDITY);
+		checkValue(DRY_HUMIDITY, WET_HUMIDITY);
+		checkValue(WET_HUMIDITY, HUMID_HUMIDITY);
 
 		checkValue(MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS, DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS);
 		checkValue(DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS, OCEAN_TO_COAST_CONTINENTALNESS);
