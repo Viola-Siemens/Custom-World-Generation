@@ -12,7 +12,7 @@ import java.util.List;
 import static com.hexagram2021.custom_worldgen.CustomWorldGeneration.MODID;
 
 public class CWGCommonConfig {
-	public interface IConfigValue<T extends Number> {
+	public interface IConfigValue<T extends Serializable> {
 		List<IConfigValue<?>> configValues = Lists.newArrayList();
 
 		String name();
@@ -98,6 +98,37 @@ public class CWGCommonConfig {
 		}
 	}
 
+	public static class BoolConfigValue implements IConfigValue<Boolean> {
+		private final String name;
+		private boolean value;
+
+		public BoolConfigValue(String name, boolean value) {
+			this.name = name;
+			this.value = value;
+
+			configValues.add(this);
+		}
+
+		@Override
+		public void checkValueRange() throws ConfigValueException {
+		}
+
+		@Override
+		public void parseAsValue(JsonElement element) {
+			this.value = element.getAsBoolean();
+		}
+
+		@Override
+		public String name() {
+			return this.name;
+		}
+
+		@Override
+		public Boolean value() {
+			return this.value;
+		}
+	}
+
 	public static final File filePath = new File("./config/");
 	private static final File configFile = new File(filePath + "/" + MODID + "-config.json");
 	private static final File readmeFile = new File(filePath + "/" + MODID + "-config-readme.md");
@@ -139,6 +170,9 @@ public class CWGCommonConfig {
 	public static final IntConfigValue OCTAVE_TEMPERATURE_ADDER = new IntConfigValue("OCTAVE_TEMPERATURE_ADDER", 0, -8, 8);
 	public static final IntConfigValue OCTAVE_HUMIDITY_ADDER = new IntConfigValue("OCTAVE_HUMIDITY_ADDER", 0, -8, 8);
 	public static final IntConfigValue OCTAVE_CONTINENTALNESS_ADDER = new IntConfigValue("OCTAVE_CONTINENTALNESS_ADDER", 0, -8, 8);
+
+	//Spawn
+	public static final BoolConfigValue ENABLE_MUSHROOM_FIELDS_SPAWN = new BoolConfigValue("ENABLE_MUSHROOM_FIELDS_SPAWN", false);
 
 	static {
 		lazyInit();
@@ -276,7 +310,18 @@ public class CWGCommonConfig {
 		CWGLogger.LOGGER.debug("Saving json config file.");
 		try(Writer writer = new FileWriter(configFile)) {
 			JsonObject configJson = new JsonObject();
-			IConfigValue.configValues.forEach(iConfigValue -> configJson.addProperty(iConfigValue.name(), iConfigValue.value()));
+			IConfigValue.configValues.forEach(iConfigValue -> {
+				Serializable value = iConfigValue.value();
+				if(value instanceof Number number) {
+					configJson.addProperty(iConfigValue.name(), number);
+				} else if(value instanceof Boolean bool) {
+					configJson.addProperty(iConfigValue.name(), bool);
+				} else if(value instanceof String str) {
+					configJson.addProperty(iConfigValue.name(), str);
+				} else {
+					CWGLogger.LOGGER.error("Unknown Config Value Type: " + value.getClass().getName());
+				}
+			});
 			IConfigHelper.writeJsonToFile(writer, null, configJson, 0);
 		}
 	}
