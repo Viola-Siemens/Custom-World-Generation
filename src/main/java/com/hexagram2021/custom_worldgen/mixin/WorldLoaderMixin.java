@@ -1,6 +1,7 @@
 package com.hexagram2021.custom_worldgen.mixin;
 
 import com.google.common.collect.ImmutableList;
+import com.hexagram2021.custom_worldgen.common.CWGLogger;
 import com.hexagram2021.custom_worldgen.mixin.accessors.CubicSplineMultipointAccessor;
 import com.hexagram2021.custom_worldgen.mixin.accessors.NoiseGeneratorSettingsAccess;
 import com.hexagram2021.custom_worldgen.mixin.accessors.NoiseParametersAccess;
@@ -92,6 +93,8 @@ public abstract class WorldLoaderMixin {
 		modifyOverworldJaggedness(overworldJaggedness);
 		modifyOverworldJaggedness(overworldLargeJaggedness);
 		modifyOverworldJaggedness(overworldAmplifiedJaggedness);
+
+		CWGLogger.LOGGER.debug("Successfully applied config values to worldgen.");
 		return res;
 	}
 

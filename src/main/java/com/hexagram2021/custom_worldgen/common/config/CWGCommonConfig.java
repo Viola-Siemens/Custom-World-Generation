@@ -213,6 +213,9 @@ public class CWGCommonConfig {
 	private static void fillReadmeFile() throws IOException {
 		try(Writer writer = new FileWriter(readmeFile)) {
 			writer.write("# Temperature\n\n");
+			writer.write("## Description\n\n");
+			writer.write("The temperature values MUST BE ASCENDING!\n\n");
+			writer.write("Temperature in [-1.0, FROZEN_TEMPERATURE] will be filled with frozen biomes (eg. Snowy Plains, Frozen Ocean), [FROZEN_TEMPERATURE, COOL_TEMPERATURE] is for cold biomes (eg. Taiga, Cold Ocean), [COOL_TEMPERATURE, WARM_TEMPERATURE] is for neutral biomes (eg. Plains, Forests), [WARM_TEMPERATURE, HOT_TEMPERATURE] is for warm biomes (eg. savanna, jungle), and [HOT_TEMPERATURE, 1.0] is for hot biomes (eg. badlands, desert).\n\n");
 			writer.write("## Presets\n\n");
 			writer.write("### Vanilla\n\n");
 			writer.write("```json\n{\n");
@@ -223,6 +226,9 @@ public class CWGCommonConfig {
 			writer.write("\t\"OCTAVE_TEMPERATURE_ADDER\": 0\n");
 			writer.write("}\n```\n\n");
 			writer.write("# Humidity\n\n");
+			writer.write("## Description\n\n");
+			writer.write("The humidity values MUST BE ASCENDING!\n\n");
+			writer.write("Temperature in [-1.0, ARID_HUMIDITY] will be filled with arid biomes (eg. ice spikes, savanna), [ARID_HUMIDITY, DRY_HUMIDITY] is for dry biomes (eg. plains, windswept gravelly hills), [DRY_HUMIDITY, WET_HUMIDITY] is for neutral biomes (eg. meadows, forests), [WET_HUMIDITY, HUMID_HUMIDITY] is for wet biomes (eg. taiga, wooded badlands), and [HUMID_HUMIDITY, 1.0] is for humid biomes (eg. dark forests, jungle).\n\n");
 			writer.write("## Presets\n\n");
 			writer.write("### Vanilla\n\n");
 			writer.write("```json\n{\n");
@@ -294,6 +300,9 @@ public class CWGCommonConfig {
 			writer.write("- INLAND_EROSION_SHAPER should be a little greater than NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS.\n");
 			writer.write("- MID_INLAND_SHAPER should be a little less than MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS.\n");
 			writer.write("- PEAKS_EROSION_SHAPER should be a little greater than PEAKS_CONTINENTALNESS.\n\n");
+			writer.write("# Others\n\n");
+			writer.write("## ENABLE_MUSHROOM_FIELDS_SPAWN\n\n");
+			writer.write("If true, players can spawn at mushroom fields.\n\n");
 		}
 	}
 
