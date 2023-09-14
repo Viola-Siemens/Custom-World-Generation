@@ -5,8 +5,10 @@
   "refmap": "custom_worldgen.refmap.json",
   "mixins": [
     "BiomeGenerationMixin",
-    "NoiseDataMixin",
-    "TerrainShaperMixin"
+    "WorldLoaderMixin",
+    "accessors.CubicSplineMultipointAccessor",
+    "accessors.NoiseGeneratorSettingsAccess",
+    "accessors.NoiseParametersAccess"
   ],
   "minVersion": "0.8"
 }
