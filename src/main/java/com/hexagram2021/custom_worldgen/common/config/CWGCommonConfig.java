@@ -172,6 +172,7 @@ public class CWGCommonConfig {
 	public static final IntConfigValue OCTAVE_CONTINENTALNESS_ADDER = new IntConfigValue("OCTAVE_CONTINENTALNESS_ADDER", 0, -8, 8);
 
 	//Spawn
+	public static final FloatConfigValue STRUCTURE_DENSITY_MULTIPLIER = new FloatConfigValue("STRUCTURE_DENSITY_MULTIPLIER", 1.0F, 0.001F, 100.0F);
 	public static final BoolConfigValue ENABLE_MUSHROOM_FIELDS_SPAWN = new BoolConfigValue("ENABLE_MUSHROOM_FIELDS_SPAWN", false);
 
 	static {
@@ -301,6 +302,8 @@ public class CWGCommonConfig {
 			writer.write("- MID_INLAND_SHAPER should be a little less than MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS.\n");
 			writer.write("- PEAKS_EROSION_SHAPER should be a little greater than PEAKS_CONTINENTALNESS.\n\n");
 			writer.write("# Others\n\n");
+			writer.write("## STRUCTURE_DENSITY_MULTIPLIER\n\n");
+			writer.write("The higher, the denser the structures will be. The lower, the less chance you can find structures in your world.\n\n");
 			writer.write("## ENABLE_MUSHROOM_FIELDS_SPAWN\n\n");
 			writer.write("If true, players can spawn at mushroom fields.\n\n");
 		}
