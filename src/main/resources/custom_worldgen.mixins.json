@@ -5,6 +5,7 @@
   "refmap": "custom_worldgen.refmap.json",
   "mixins": [
     "BiomeGenerationMixin",
+    "RandomSpreadTypeMixin",
     "WorldLoaderMixin",
     "accessors.CubicSplineMultipointAccessor",
     "accessors.NoiseGeneratorSettingsAccess",

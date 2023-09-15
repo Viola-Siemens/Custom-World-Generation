@@ -129,6 +129,10 @@ Here are some constructive comments for you to modify the shaper values:
 
 # Others
 
+## STRUCTURE_DENSITY_MULTIPLIER
+
+The higher, the denser the structures will be. The lower, the less chance you can find structures in your world.
+
 ## ENABLE_MUSHROOM_FIELDS_SPAWN
 
 If true, players can spawn at mushroom fields.
