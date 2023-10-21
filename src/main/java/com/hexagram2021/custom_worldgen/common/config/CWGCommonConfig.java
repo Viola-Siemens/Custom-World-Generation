@@ -213,6 +213,8 @@ public class CWGCommonConfig {
 
 	private static void fillReadmeFile() throws IOException {
 		try(Writer writer = new FileWriter(readmeFile)) {
+			writer.write("# Config Generator\n\n");
+			writer.write("If you are confused about all parameters and terrain generation, you can try our [Config Generator](https://viola-siemens.github.io/pages/tools/oceanworld-config.html) to generate config and see the preview of the config you make.\n\n");
 			writer.write("# Temperature\n\n");
 			writer.write("## Description\n\n");
 			writer.write("The temperature values MUST BE ASCENDING!\n\n");
@@ -240,8 +242,6 @@ public class CWGCommonConfig {
 			writer.write("\t\"OCTAVE_HUMIDITY_ADDER\": 0\n");
 			writer.write("}\n```\n\n");
 			writer.write("# Continentalness\n\n");
-			writer.write("## Config Generator\n\n");
-			writer.write("If you are confused about continentalness points and terrain generation, you can try our [Config Generator](https://viola-siemens.github.io/pages/tools/oceanworld-config.html) to generate config and see the preview of the config you make.\n\n");
 			writer.write("## Description\n\n");
 			writer.write("The continentalness values and shaper values MUST BE ASCENDING!\n\n");
 			writer.write("If you modify these continentalness values, please remember to modify shaper values under the guide.\n\n");
