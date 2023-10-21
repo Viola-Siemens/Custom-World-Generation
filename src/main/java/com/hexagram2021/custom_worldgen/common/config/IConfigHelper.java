@@ -2,11 +2,12 @@ package com.hexagram2021.custom_worldgen.common.config;
 
 import com.google.gson.*;
 
+import javax.annotation.Nullable;
 import java.io.*;
 import java.util.*;
 
 public interface IConfigHelper {
-	static void writeJsonToFile(Writer writer, String key, JsonElement json, int tab) throws IOException {
+	static void writeJsonToFile(Writer writer, @Nullable String key, JsonElement json, int tab) throws IOException {
 		writer.write("\t".repeat(tab));
 		if(key != null) {
 			writer.write("\"" + key + "\": ");
