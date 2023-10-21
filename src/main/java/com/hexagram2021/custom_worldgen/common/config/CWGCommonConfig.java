@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.hexagram2021.custom_worldgen.common.CWGLogger;
+import com.hexagram2021.custom_worldgen.common.utils.CWGLogger;
 
 import java.io.*;
 import java.util.List;
