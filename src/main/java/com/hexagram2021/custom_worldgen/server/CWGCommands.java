@@ -12,6 +12,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.biome.Climate;
+import net.minecraft.world.level.biome.OverworldBiomeBuilder;
+import net.minecraft.world.level.levelgen.NoiseRouterData;
 
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
@@ -55,17 +57,19 @@ public final class CWGCommands {
 		} else {
 			printer = msg -> player.sendSystemMessage(Component.literal(msg));
 		}
-		printDebugInfoTo(printer, blockPos.getX(), blockPos.getY(), blockPos.getZ(), c, e, t, h, w);
+		OverworldBiomeBuilder overworldBiomeBuilder = new OverworldBiomeBuilder();
+		printDebugInfoTo(printer, blockPos.getX(), blockPos.getY(), blockPos.getZ(), overworldBiomeBuilder, c, e, t, h, w);
 		
 		return Command.SINGLE_SUCCESS;
 	}
 	
-	private static void printDebugInfoTo(Consumer<String> printer, int x, int y, int z, float c, float e, float t, float h, float w) {
+	private static void printDebugInfoTo(Consumer<String> printer, int x, int y, int z, OverworldBiomeBuilder overworldBiomeBuilder, float c, float e, float t, float h, float w) {
 		printer.accept("The worldgen noise parameters of block position (%d, %d, %d) is:".formatted(x, y, z));
-		printer.accept("\tContinentalness: " + c);
-		printer.accept("\tErosion: " + e);
-		printer.accept("\tTemperature: " + t);
-		printer.accept("\tHumidity: " + h);
-		printer.accept("\tWeirdness: " + w);
+		printer.accept("    Continentalness: " + c + " (" + overworldBiomeBuilder.getDebugStringForContinentalness(c) + ")");
+		printer.accept("    Erosion: " + e + " (" + overworldBiomeBuilder.getDebugStringForErosion(e) + ")");
+		printer.accept("    Temperature: " + t + " (" + overworldBiomeBuilder.getDebugStringForTemperature(t) + ")");
+		printer.accept("    Humidity: " + h + " (" + overworldBiomeBuilder.getDebugStringForHumidity(h) + ")");
+		double pv = NoiseRouterData.peaksAndValleys(w);
+		printer.accept("    Weirdness: " + w + " (" + OverworldBiomeBuilder.getDebugStringForPeaksAndValleys(pv) + ")");
 	}
 }
