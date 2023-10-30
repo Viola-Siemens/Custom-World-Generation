@@ -65,11 +65,10 @@ public final class CWGCommands {
 	
 	private static void printDebugInfoTo(Consumer<String> printer, int x, int y, int z, OverworldBiomeBuilder overworldBiomeBuilder, float c, float e, float t, float h, float w) {
 		printer.accept("The worldgen noise parameters of block position (%d, %d, %d) is:".formatted(x, y, z));
-		printer.accept("    Continentalness: " + c + " (" + overworldBiomeBuilder.getDebugStringForContinentalness(c) + ")");
-		printer.accept("    Erosion: " + e + " (" + overworldBiomeBuilder.getDebugStringForErosion(e) + ")");
-		printer.accept("    Temperature: " + t + " (" + overworldBiomeBuilder.getDebugStringForTemperature(t) + ")");
-		printer.accept("    Humidity: " + h + " (" + overworldBiomeBuilder.getDebugStringForHumidity(h) + ")");
-		double pv = NoiseRouterData.peaksAndValleys(w);
-		printer.accept("    Weirdness: " + w + " (" + OverworldBiomeBuilder.getDebugStringForPeaksAndValleys(pv) + ")");
+		printer.accept("  Continentalness: %-8.4f (%s)".formatted(c, overworldBiomeBuilder.getDebugStringForContinentalness(c)));
+		printer.accept("          Erosion: %-8.4f (%s)".formatted(e, overworldBiomeBuilder.getDebugStringForErosion(e)));
+		printer.accept("      Temperature: %-8.4f (%s)".formatted(t, overworldBiomeBuilder.getDebugStringForTemperature(t)));
+		printer.accept("         Humidity: %-8.4f (%s)".formatted(h, overworldBiomeBuilder.getDebugStringForHumidity(h)));
+		printer.accept("        Weirdness: %-8.4f (%s)".formatted(w, OverworldBiomeBuilder.getDebugStringForPeaksAndValleys(NoiseRouterData.peaksAndValleys(w))));
 	}
 }
