@@ -10,6 +10,23 @@ import static com.hexagram2021.custom_worldgen.common.config.CWGCommonConfig.*;
 
 @Mixin(OverworldBiomeBuilder.class)
 public class BiomeGenerationMixin {
+	/*
+	@Shadow @Final private Climate.Parameter[] temperatures;
+	@Shadow @Final private Climate.Parameter[] humidities;
+	@Shadow @Final private Climate.Parameter[] erosions;
+	@Shadow @Final private Climate.Parameter FULL_RANGE;
+	@Shadow @Final private Climate.Parameter FROZEN_RANGE;
+	@Shadow @Final private Climate.Parameter UNFROZEN_RANGE;
+	@Shadow @Final private Climate.Parameter mushroomFieldsContinentalness;
+	@Shadow @Final private Climate.Parameter deepOceanContinentalness;
+	@Shadow @Final private Climate.Parameter oceanContinentalness;
+	@Shadow @Final private Climate.Parameter coastContinentalness;
+	@Shadow @Final private Climate.Parameter inlandContinentalness;
+	@Shadow @Final private Climate.Parameter nearInlandContinentalness;
+	@Shadow @Final private Climate.Parameter midInlandContinentalness;
+	@Shadow @Final private Climate.Parameter farInlandContinentalness;
+	 */
+	
 	@Redirect(method = "<init>()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 1))
 	public Climate.Parameter modifyFrozenTemperature(float from, float to) {
 		return Climate.Parameter.span(-1.0F, FROZEN_TEMPERATURE.value());
@@ -84,4 +101,35 @@ public class BiomeGenerationMixin {
 	public Climate.Parameter modifyFarInlandContinentalness(float from, float to) {
 		return Climate.Parameter.span(MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS.value(), 1.2F);
 	}
+	
+	/*
+	@Inject(method = "<init>()V", at = @At(value = "TAIL"))
+	public void printDebugInfo(CallbackInfo ci) {
+		CWGLogger.LOGGER.info("FULL_RANGE = " + FULL_RANGE);
+		CWGLogger.LOGGER.info("Temperatures:");
+		for(Climate.Parameter parameter: this.temperatures) {
+			CWGLogger.LOGGER.info(parameter.toString());
+		}
+		CWGLogger.LOGGER.info("Humidities:");
+		for(Climate.Parameter parameter: this.humidities) {
+			CWGLogger.LOGGER.info(parameter.toString());
+		}
+		CWGLogger.LOGGER.info("Erosions:");
+		for(Climate.Parameter parameter: this.erosions) {
+			CWGLogger.LOGGER.info(parameter.toString());
+		}
+		CWGLogger.LOGGER.info("FROZEN_RANGE = " + FROZEN_RANGE);
+		CWGLogger.LOGGER.info("UNFROZEN_RANGE = " + UNFROZEN_RANGE);
+		
+		CWGLogger.LOGGER.info("Continentalnesses:");
+		CWGLogger.LOGGER.info("mushroomFieldsContinentalness = " + this.mushroomFieldsContinentalness);
+		CWGLogger.LOGGER.info("deepOceanContinentalness = " + this.deepOceanContinentalness);
+		CWGLogger.LOGGER.info("oceanContinentalness = " + this.oceanContinentalness);
+		CWGLogger.LOGGER.info("coastContinentalness = " + this.coastContinentalness);
+		CWGLogger.LOGGER.info("inlandContinentalness = " + this.inlandContinentalness);
+		CWGLogger.LOGGER.info("nearInlandContinentalness = " + this.nearInlandContinentalness);
+		CWGLogger.LOGGER.info("midInlandContinentalness = " + this.midInlandContinentalness);
+		CWGLogger.LOGGER.info("farInlandContinentalness = " + this.farInlandContinentalness);
+	}
+	 */
 }
