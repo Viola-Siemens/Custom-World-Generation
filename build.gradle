@@ -125,12 +125,18 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    maven { //Conditional Mixin
+        url 'https://jitpack.io'
+    }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20-46.0.14'
     
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    implementation 'com.github.ThinkingStudios:ConditionalMixinForged:0.1.0'
+    compileOnly fg.deobf("com.github.glitchfiend:TerraBlender-forge:1.20-3.0.0.163")   //TerraBlender
 }
 
 jar {

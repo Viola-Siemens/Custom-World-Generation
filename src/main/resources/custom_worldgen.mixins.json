@@ -3,13 +3,17 @@
   "package": "com.hexagram2021.custom_worldgen.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "custom_worldgen.refmap.json",
+  "plugin": "com.hexagram2021.custom_worldgen.conditionalmixin.CWGMixinPlugin",
   "mixins": [
-    "BiomeGenerationMixin",
-    "RandomSpreadStructurePlacementMixin",
-    "WorldLoaderMixin",
-    "accessors.CubicSplineMultipointAccessor",
-    "accessors.NoiseGeneratorSettingsAccess",
-    "accessors.NoiseParametersAccess"
+	"BiomeGenerationMixin",
+	"RandomSpreadStructurePlacementMixin",
+	"WorldLoaderMixin",
+	"accessors.CubicSplineMultipointAccessor",
+	"accessors.NoiseGeneratorSettingsAccess",
+	"accessors.NoiseParametersAccess",
+	"terrablender.TBParameterUtilContinentalnessMixin",
+	"terrablender.TBParameterUtilsHumidityMixin",
+	"terrablender.TBParameterUtilsTemperatureMixin"
   ],
   "minVersion": "0.8"
 }
