@@ -1,8 +1,6 @@
 package com.hexagram2021.custom_worldgen.mixin.terrablender;
 
-import com.hexagram2021.custom_worldgen.conditionalmixin.TerraBlenderClassLoadConditionTester;
-import me.fallenbreath.conditionalmixin.api.annotation.Condition;
-import me.fallenbreath.conditionalmixin.api.annotation.Restriction;
+import com.hexagram2021.custom_worldgen.conditionalmixin.Restriction;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
@@ -10,7 +8,7 @@ import terrablender.api.ParameterUtils;
 
 import static com.hexagram2021.custom_worldgen.common.config.CWGCommonConfig.*;
 
-@Restriction(require = @Condition(type = Condition.Type.TESTER, tester = TerraBlenderClassLoadConditionTester.class))
+@Restriction(classNames = {"terrablender.api.ParameterUtils"})
 @Mixin(ParameterUtils.Humidity.class)
 public class TBParameterUtilsHumidityMixin {
 	@ModifyConstant(method = "<clinit>", constant = @Constant(floatValue = -0.35F))
