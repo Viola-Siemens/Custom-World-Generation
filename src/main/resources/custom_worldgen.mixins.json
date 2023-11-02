@@ -6,6 +6,7 @@
   "plugin": "com.hexagram2021.custom_worldgen.conditionalmixin.CWGMixinPlugin",
   "mixins": [
 	"BiomeGenerationMixin",
+	"ExclusionZoneMixin",
 	"RandomSpreadStructurePlacementMixin",
 	"WorldLoaderMixin",
 	"accessors.CubicSplineMultipointAccessor",
