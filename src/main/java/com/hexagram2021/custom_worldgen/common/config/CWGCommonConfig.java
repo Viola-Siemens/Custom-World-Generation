@@ -324,14 +324,11 @@ public class CWGCommonConfig {
 			JsonObject configJson = new JsonObject();
 			IConfigValue.configValues.forEach(iConfigValue -> {
 				Serializable value = iConfigValue.value();
-				if(value instanceof Number number) {
-					configJson.addProperty(iConfigValue.name(), number);
-				} else if(value instanceof Boolean bool) {
-					configJson.addProperty(iConfigValue.name(), bool);
-				} else if(value instanceof String str) {
-					configJson.addProperty(iConfigValue.name(), str);
-				} else {
-					CWGLogger.LOGGER.error("Unknown Config Value Type: " + value.getClass().getName());
+				switch (value) {
+					case Number number -> configJson.addProperty(iConfigValue.name(), number);
+					case Boolean bool -> configJson.addProperty(iConfigValue.name(), bool);
+					case String str -> configJson.addProperty(iConfigValue.name(), str);
+					default -> CWGLogger.LOGGER.error("Unknown Config Value Type: " + value.getClass().getName());
 				}
 			});
 			IConfigHelper.writeJsonToFile(writer, null, configJson, 0);
