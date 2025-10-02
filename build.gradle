@@ -19,7 +19,7 @@ apply plugin: 'net.minecraftforge.gradle'
 
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.3.0'
+version = '0.2.0'
 group = 'com.hexagram2021.custom_worldgen'
 archivesBaseName = 'custom_worldgen'
 
@@ -27,7 +27,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'official', version: '1.19.3'
+    mappings channel: 'official', version: '1.18.2'
     
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     
@@ -123,9 +123,11 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.3-44.1.0'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
     
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    compileOnly fg.deobf("com.github.glitchfiend:TerraBlender-forge:1.18.2-1.2.0.126")
 }
 
 jar {
@@ -133,7 +135,7 @@ jar {
         attributes([
                 "Specification-Title"     : "Custom World Generation",
                 "Specification-Vendor"    : "Hexagram",
-                "Specification-Version"   : "1", // We are version 1 of ourselves
+                "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "Hexagram",

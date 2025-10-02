@@ -1,10 +1,17 @@
 package com.hexagram2021.custom_worldgen.mixin;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.OverworldBiomeBuilder;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.List;
 
 import static com.hexagram2021.custom_worldgen.common.config.CWGCommonConfig.*;
 
@@ -83,5 +90,22 @@ public class BiomeGenerationMixin {
 	@Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Climate$Parameter;span(FF)Lnet/minecraft/world/level/biome/Climate$Parameter;", ordinal = 25))
 	public Climate.Parameter modifyFarInlandContinentalness(float from, float to) {
 		return Climate.Parameter.span(MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS.value(), 1.2F);
+	}
+
+	@Shadow @Final
+	private Climate.Parameter FULL_RANGE;
+
+	@Inject(method = "spawnTarget", at = @At(value = "HEAD"), cancellable = true)
+	private void cwg$modifySpawnTarget(CallbackInfoReturnable<List<Climate.ParameterPoint>> cir) {
+		ImmutableList.Builder<Climate.ParameterPoint> builder = ImmutableList.builder();
+		Climate.Parameter surface = Climate.Parameter.point(0.0F);
+		float weirdnessGap = 0.16F;
+		builder.add(new Climate.ParameterPoint(FULL_RANGE, FULL_RANGE, Climate.Parameter.span(COAST_TO_INLAND_CONTINENTALNESS.value(), 1.0F), FULL_RANGE, surface, Climate.Parameter.span(-1.0F, -weirdnessGap), 0L));
+		builder.add(new Climate.ParameterPoint(FULL_RANGE, FULL_RANGE, Climate.Parameter.span(COAST_TO_INLAND_CONTINENTALNESS.value(), 1.0F), FULL_RANGE, surface, Climate.Parameter.span(weirdnessGap, 1.0F), 0L));
+		if(ENABLE_MUSHROOM_FIELDS_SPAWN.value()) {
+			builder.add(new Climate.ParameterPoint(FULL_RANGE, FULL_RANGE, Climate.Parameter.span(-1.2F, MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS.value()), FULL_RANGE, surface, Climate.Parameter.span(-1.0F, -weirdnessGap), 0L));
+			builder.add(new Climate.ParameterPoint(FULL_RANGE, FULL_RANGE, Climate.Parameter.span(-1.2F, MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS.value()), FULL_RANGE, surface, Climate.Parameter.span(weirdnessGap, 1.0F), 0L));
+		}
+		cir.setReturnValue(builder.build());
 	}
 }

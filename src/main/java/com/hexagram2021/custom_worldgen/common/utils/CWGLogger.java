@@ -1,4 +1,4 @@
-package com.hexagram2021.custom_worldgen.common;
+package com.hexagram2021.custom_worldgen.common.utils;
 
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
