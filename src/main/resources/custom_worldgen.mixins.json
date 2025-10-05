@@ -6,10 +6,10 @@
   "plugin": "com.hexagram2021.custom_worldgen.conditionalmixin.CWGMixinPlugin",
   "mixins": [
     "BiomeGenerationMixin",
+    "NoiseDataMixin",
     "RandomSpreadStructurePlacementMixin",
     "WorldLoaderMixin",
     "accessors.CubicSplineMultipointAccessor",
-    "accessors.NoiseParametersAccess",
     "terrablender.TBParameterUtilContinentalnessMixin",
     "terrablender.TBParameterUtilsHumidityMixin",
     "terrablender.TBParameterUtilsTemperatureMixin"
