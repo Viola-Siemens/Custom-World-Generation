@@ -341,6 +341,18 @@ public class CWGCommonConfig {
 		}
 	}
 
+	public static void checkValue(FloatConfigValue less, float greater) {
+		if(less.value() >= greater - 1e-6F) {
+			throw new ConfigValueException(less.name() + " is greater than " + greater + "! Please check your config file.");
+		}
+	}
+
+	public static void checkValue(float less, FloatConfigValue greater) {
+		if(less >= greater.value() - 1e-6F) {
+			throw new ConfigValueException(less + " is greater than " + greater.name() + "! Please check your config file.");
+		}
+	}
+
 	public static void checkValues() {
 		IConfigValue.configValues.forEach(IConfigValue::checkValueRange);
 
@@ -358,6 +370,8 @@ public class CWGCommonConfig {
 		checkValue(COAST_TO_INLAND_CONTINENTALNESS, NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS);
 		checkValue(NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS, MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS);
 		checkValue(MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS, PEAKS_CONTINENTALNESS);
+		
+		checkValue(COAST_TO_INLAND_CONTINENTALNESS, 1.0F);
 
 		checkValue(MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER, DEEP_OCEAN_TO_OCEAN_SHAPER);
 		checkValue(DEEP_OCEAN_TO_OCEAN_SHAPER, OCEAN_TO_COAST_SHAPER);
